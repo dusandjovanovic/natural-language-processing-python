@@ -30,6 +30,8 @@ Ako bi se generisala lista bi-gramova iz prethodne rečenice, očekivani izlaz b
 ]
 ```
 
+### Generisanje n-gramova
+
 Najprostija varijanta funkcije koja obavlja generisanje n-gramova na osnovu ulaznog teksta:
 
 ```python
@@ -81,3 +83,27 @@ def generate_ngrams(s, n):
 
     return ngrams
 ```
+
+### Nalaženje verovatnoće svakog n-grama
+
+**Verovatnoća pojavljivanja konkretnog n-grama**, definisanog njegovim indeksom, može se naći kao odnos broja poklapanja uzorka sa ukupnim brojem n-gramova koji su dobijeni od polazng teksta. 
+
+```python
+def probability_ngrams(ngrams, index):
+    ngram = ngrams[index]
+    ngram_found = 0
+
+    for i_ngram in ngrams:
+        if (i_ngram == ngram):
+            ngram_found = ngram_found + 1
+
+    return ngram_found / len(ngrams)
+```
+
+### Rezultati
+
+Nakon što se izvrši generisanje svih n-gramova varijabilnih dužina, na ekranu se može videti svaki od njih kao i verovatnoća pojavljivanja istog. U slici ispod se može pogledati deo krajnjeg rezultata. Kako je tekst preobiman, nisu prikazani rezultati kompletne analize.
+
+![alt text][screenshot_end]
+
+[screenshot_end]: meta/screenshot_end.png
