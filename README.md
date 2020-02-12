@@ -40,15 +40,16 @@ def generate_ngrams(s, n):
     s = s.lower()
     
     # zamena svih ne-alfanumeričkih znakova razmacima
-    s = re.sub(r'[^a-zA-Z0-9\s]', ' ', s)
+    # važno je uključiti specifična slova srpskog alfabeta poput ž, š i sličih
+    s = re.sub(r'[^a-zA-Z0-9ćčžšđ\s]', ' ', s)
     
     # razbijanje rečenica na tokene, bez praznih tokena
     tokens = [token for token in s.split(" ") if token != ""]
     
     # zip funkcijom se generišu n-gramovi
     # potrebno je i nadovezati razbijene tokene
-    ngrams = zip(*[token[i:] for i in range(n)])
+    ngrams = zip(*[tokens[i:] for i in range(n)])
     return [" ".join(ngram) for ngram in ngrams]
 ```
 
-Ova funkcija se bazira na nepromenljivom **ulaznom argumentu n** kako bi generisala n-gramove. Koristi `zip` funkciju koja formira generator čiji je zadatak da agregira elemente različitih listi.
+Ova funkcija se bazira na nepromenljivom **ulaznom argumentu n** kako bi generisala n-gramove. Koristi `zip` funkciju koja formira generator čiji je zadatak da agregira elemente različitih listi. Važno je prilikom korišćenja regularnog izraza za filtriranje uključiti i **specifična slova srpskog alfabeta**.
