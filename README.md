@@ -53,3 +53,31 @@ def generate_ngrams(s, n):
 ```
 
 Ova funkcija se bazira na nepromenljivom **ulaznom argumentu n** kako bi generisala n-gramove. Koristi `zip` funkciju koja formira generator čiji je zadatak da agregira elemente različitih listi. Važno je prilikom korišćenja regularnog izraza za filtriranje uključiti i **specifična slova srpskog alfabeta**.
+
+Funkcija se može modifikovati tako da je dužina n-gramova varijabilna po formuli **Broj_indeksa % 7 + 7**.
+
+```python
+def generate_ngrams(s, n):
+    # konverzija u mala slova
+    s = s.lower()
+    
+    # zamena svih ne-alfanumeričkih znakova razmacima
+    # važno je uključiti specifična slova srpskog alfabeta poput ž, š i sličih
+    s = re.sub(r'[^a-zA-Z0-9ćčžšđ\s]', ' ', s)
+    
+    # razbijanje rečenica na tokene, bez praznih tokena
+    tokens = [token for token in s.split(" ") if token != ""]
+    
+    # prolaskom kroz ulazni niz se generišu n-gramovi
+    # potrebno je i nadovezati razbijene tokene
+    offset = 0
+    ngrams = []
+    while (offset <= len(tokens)):
+        length = offset % n + n
+        ngrams.append(tokens[offset:(offset+length)])
+        offset = offset + 1
+        if (offset + length == len(tokens) + 1):
+            break
+
+    return ngrams
+```
