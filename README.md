@@ -100,6 +100,23 @@ def probability_ngrams(ngrams, index):
     return ngram_found / len(ngrams)
 ```
 
+### Ulazni uzorak teksta
+
+Kao primer, izabran je obiman tekst recenzije knjige na srpskom jeziku. Ulazi fajl je prekonfigurisan na putanju `main_file = 'input_text.txt'` i u slučaju pokretanja programa nad drugim uzorkom je potrebno promeniti fajl.
+
+```python
+def main():
+    contents = read_file(main_file)
+    ngrams = generate_ngrams(contents, n=7)
+
+    index = 0
+    for ngram in ngrams:
+        print(ngram)
+        print("Probability of n-gram", probability_ngrams(ngrams, index))
+```
+
+Ulazni fajl se učitava, a nakon toga se procesuira pročitani tekst. Neophodno je da fajl bude u `.txt` formatu sa `UTF-8` enkodiranjem. Nakon što se tekst razbije na tokene potrebno je formirati n-gramove prethodno objašnjenom funkcijom `generate_ngrams`. Svaki n-gram se prikazuje na izlazu uz njegovu verovatnoću pojavljivanja u tekstu koja se dobija funkcijom `probability_ngrams`.
+
 ### Rezultati
 
 Nakon što se izvrši generisanje svih n-gramova varijabilnih dužina, na ekranu se može videti svaki od njih kao i verovatnoća pojavljivanja istog. U slici ispod se može pogledati deo krajnjeg rezultata. Kako je tekst preobiman, nisu prikazani rezultati kompletne analize.
