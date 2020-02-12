@@ -124,3 +124,7 @@ Nakon što se izvrši generisanje svih n-gramova varijabilnih dužina, na ekranu
 ![alt text][screenshot_end]
 
 [screenshot_end]: meta/screenshot_end.png
+
+Što se tiče modela n-gramova, korišćeni model je varijabilne dužine i može se koristiti u ovom obliku. Medjutim, za konkretnije implementacije treba razmotriti i modele fiksnih dužina gde će svi n-gramovi biti u obliku bi-gramova ili tri-gramova.
+
+Sa ovakvim modelima je potencijalno pogodnije nalaziti preklapanja istih gramova i samim tim koristiti takve nalaze kao osnove za detaljnije analize.
