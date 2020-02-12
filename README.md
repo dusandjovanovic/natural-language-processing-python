@@ -102,7 +102,7 @@ def probability_ngrams(ngrams, index):
 
 ### Ulazni uzorak teksta
 
-Kao primer, izabran je obiman tekst recenzije knjige na srpskom jeziku. Ulazi fajl je prekonfigurisan na putanju `main_file = 'input_text.txt'` i u slučaju pokretanja programa nad drugim uzorkom je potrebno promeniti fajl.
+Kao primer, izabran je obiman tekst recenzije knjige na srpskom jeziku. Ulazi fajl je prekonfigurisan na putanju `main_file = 'input_text.txt'` i u slučaju pokretanja programa nad drugim uzorkom je potrebno promeniti fajl. Ulazni fajl se može videti na ovom repozitorijumu [ovde](https://github.com/dusandjovanovic/natural-language-processing-python/blob/master/natural-language-processing-python/input_text.txt).
 
 ```python
 def main():
